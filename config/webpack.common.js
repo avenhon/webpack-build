@@ -8,7 +8,7 @@ module.exports = {
   entry: [paths.src + '/index.js'],
   output: {
     path: paths.dist,
-    filename: 'test.bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/',
   },
   module: {
@@ -16,14 +16,6 @@ module.exports = {
       {
         test: /\.js$/,
         use: ['babel-loader'],
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
       },
       {
         test: /\.hbs$/,
@@ -48,6 +40,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: paths.src + '/index.html',
+      favicon: paths.src + '/resources/icons/favicon.ico',
     }),
   ],
   resolve: {
