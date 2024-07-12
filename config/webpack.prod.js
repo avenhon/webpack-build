@@ -23,12 +23,26 @@ module.exports = merge(commonConfig, {
             options: {
               importLoaders: 2,
               sourceMap: false,
-              modules: true,
+              modules: false,
             },
           },
           'postcss-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'resources/fonts/[name][ext]',
+        },
       },
     ],
   },
