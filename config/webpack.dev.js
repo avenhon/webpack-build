@@ -24,9 +24,10 @@ module.exports = merge(commonConfig, {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-              importLoaders: 1,
-              modules: true,
+              sourceMap: false,
+              importLoaders: 2,
+              modules: false,
+              url: false,
             },
           },
           {
@@ -39,6 +40,40 @@ module.exports = merge(commonConfig, {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ico|gif|png|jpg|jpeg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.ico$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/resource',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
             },
           },
         ],
